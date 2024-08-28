@@ -14,8 +14,8 @@ const AppointmentList = ({ appointmentData, handleDelete }) => {
               <h4>{doctor}</h4>
             </Col>
             <Col>
-              <h3>Date: {new Date().toLocaleDateString("tr")}</h3>
-              <h4>Time: {new Date().toLocaleTimeString("tr")}</h4>
+              <h3>Date: {new Date(day).toLocaleDateString("tr")}</h3>
+              <h4>Time: {new Date(day).toLocaleTimeString("tr")}</h4>
             </Col>
             <Col>
               <TiDelete

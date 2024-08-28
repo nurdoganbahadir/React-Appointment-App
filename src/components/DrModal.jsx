@@ -13,7 +13,7 @@ function DrModal({ handleClose, show, drName, handleAddApp }) {
       patient: pName,
       day: date,
       consulted: false,
-      doctor: (drName, date),
+      doctor: drName,
     };
     handleAddApp(newAppointment);
     handleClose();
@@ -39,15 +39,11 @@ function DrModal({ handleClose, show, drName, handleAddApp }) {
                 type="datetime-local"
                 placeholder="date"
                 required
+                onChange={(e) => setDate(e.target.value)}
               ></Form.Control>
             </Form.Group>
             <div className="text-center mt-2">
-              <Button
-                className="me-3"
-                variant="success"
-                onClick={(handleClose)}
-                type="submit"
-              >
+              <Button className="me-3" variant="success" type="submit">
                 Submit
               </Button>
               <Button variant="danger" onClick={handleClose}>
