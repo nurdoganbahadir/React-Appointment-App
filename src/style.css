@@ -8,3 +8,45 @@
   cursor: pointer;
   transform: scale(1.05);
 }
+.app-header {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 200;
+  color: purple;
+}
+.col {
+  & .patient-name {
+    color: red;
+    text-transform: capitalize;
+  }
+}
+.app-row {
+  padding: 0.7rem;
+  border-radius: 10px;
+  box-shadow: 3px 3px 15px black;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-div {
+  position: relative;
+}
+.consulted-row {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  background-color: purple;
+  border-radius: 10px;
+  padding: 0.4rem 1rem;
+  color: white;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  & h4 {
+    line-height: 15px;
+  }
+}
