@@ -44,11 +44,13 @@ const AppointmentList = ({ appointmentData, handleDelete }) => {
               />
             </Col>
           </Row>
-          <Row className="consulted-row">
-            <Col className="text-center">
-              <h4>{consulted ? "Consulted" : "Not Consulted"}</h4>
-            </Col>
-          </Row>
+          {consulted && (
+            <Row className="consulted-row">
+              <Col className="text-center">
+                <h4>Consulted</h4>
+              </Col>
+            </Row>
+          )}
         </div>
       ))}
     </Container>
