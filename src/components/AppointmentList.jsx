@@ -1,18 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { TiDelete } from "react-icons/ti";
 
 const AppointmentList = ({ appointmentData, handleDelete }) => {
-  const [showConsulted, setShowConsulted] = useState(null);
+  const [appointments, setAppointments] = useState(appointmentData);
+
+  useEffect(() => {
+    setAppointments(appointmentData);
+  }, [appointmentData]);
 
   const handleRowClick = (id) => {
-    setShowConsulted(showConsulted === id ? null : id);
+    setAppointments((prevAppointments) =>
+      prevAppointments.map((appointment) =>
+        appointment.id === id
+          ? { ...appointment, consulted: !appointment.consulted }
+          : appointment
+      )
+    );
   };
 
   return (
     <Container>
       <h3 className="app-header">Apointment</h3>
-      {appointmentData.map(({ id, patient, day, consulted, doctor }) => (
+      {appointments.map(({ id, patient, day, consulted, doctor }) => (
         <div key={id} className="card-div">
           <Row className="app-row" onClick={() => handleRowClick(id)}>
             <Col>
@@ -34,13 +44,11 @@ const AppointmentList = ({ appointmentData, handleDelete }) => {
               />
             </Col>
           </Row>
-          {showConsulted === id && (
-            <Row className="consulted-row">
-              <Col className="text-center">
-                <h4>{consulted ? "Consulted" : "Consulted"}</h4>
-              </Col>
-            </Row>
-          )}
+          <Row className="consulted-row">
+            <Col className="text-center">
+              <h4>{consulted ? "Consulted" : "Not Consulted"}</h4>
+            </Col>
+          </Row>
         </div>
       ))}
     </Container>
